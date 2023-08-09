@@ -20,6 +20,6 @@ Status: In progress
     - 在IDEA的Settings中设置host ip和端口号,check connection无误后配置完成
         - host ip一般是127.0.0.1(localhost),对于WSL,使用上面查看到的IP
         
-        ![Untitled](Chainsaw%20Installation%20c5bfe4adac7b46a18e32b2cbe675e774/Untitled%201.png)
+        ![Untitled](setting%20proxy%20in%20IDEA.png)
         
-        ![Untitled](Chainsaw%20Installation%20c5bfe4adac7b46a18e32b2cbe675e774/Untitled%202.png)
+        ![Untitled](success.png)
