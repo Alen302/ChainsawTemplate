@@ -1,0 +1,53 @@
+// project information
+ThisBuild / version := "1.0"
+ThisBuild / scalaVersion := "2.12.16"
+ThisBuild / organization := "org.sysu"
+
+// SpinalHDL
+val spinalVersion = "latest.release"
+val spinalCore = "com.github.spinalhdl" %% "spinalhdl-core" % spinalVersion
+val spinalLib = "com.github.spinalhdl" %% "spinalhdl-lib" % spinalVersion
+val spinalIdslPlugin = compilerPlugin(
+  "com.github.spinalhdl" %% "spinalhdl-idsl-plugin" % spinalVersion
+)
+
+// JGraphT JDK=1.8
+val jGraphTVersion = "1.4.0" // last version compatible with Java 1.8
+val jGraphCore = "org.jgrapht" % "jgrapht-core" % jGraphTVersion
+val jGraphExt = "org.jgrapht" % "jgrapht-ext" % jGraphTVersion
+
+// optimus
+val optimusVersion = "3.2.4"
+val optimus = "com.github.vagmcs" %% "optimus" % optimusVersion
+val optimusOj = "com.github.vagmcs" %% "optimus-solver-oj" % optimusVersion
+val optimusLp = "com.github.vagmcs" %% "optimus-solver-lp" % optimusVersion
+
+// djl for AI & array manipulation
+val djlCore = "ai.djl" % "api" % "0.20.0"
+val djlBackend = "ai.djl.pytorch" % "pytorch-engine" % "0.20.0"
+
+// for config file
+val snakeYaml = "org.yaml" % "snakeyaml" % "1.33"
+
+// for design pre-placement
+val rapidwright = "com.xilinx.rapidwright" % "rapidwright" % "2022.2.1"
+
+lazy val Chainsaw = (project in file("."))
+  .settings(
+    name := "ChainsawTemplate",
+    libraryDependencies ++= Seq(spinalCore, spinalLib, spinalIdslPlugin),
+    libraryDependencies ++= Seq(jGraphCore, jGraphExt),
+    libraryDependencies += "org.json4s" %% "json4s-jackson" % "4.0.3",
+    libraryDependencies += "org.scalanlp" %% "breeze" % "1.0",
+    libraryDependencies += "cc.redberry" %% "rings.scaladsl" % "2.5.7",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.9",
+    libraryDependencies ++= Seq(optimus, optimusOj, optimusLp),
+    libraryDependencies += "com.google.code.gson" % "gson" % "2.10",
+    libraryDependencies += "com.fasterxml.jackson.core" % "jackson-core" % "2.14.1",
+    libraryDependencies += djlCore,
+    libraryDependencies += djlBackend,
+    libraryDependencies += snakeYaml,
+    libraryDependencies += rapidwright
+  )
+
+fork := true
